@@ -19,23 +19,24 @@
   CONFIGURAÇÃO: é só esta parte que você edita.
   umamiId: o "Website ID" do Umami (contador de cliques). Vazio = sem contador.
   planilhaCsv: o link CSV da planilha publicada. Vazio = usa data/conteudo.json.
-  midiaKit: link do mídia kit. Vazio = o botão some.
-  numeros: seguidores pra mostrar no painel de marcas, ex.: {"rede": "TikTok", "valor": "12 mil"}.
-           O do Instagram entra sozinho pelo robô.
+  numeros: seguidores no painel de marcas. O do Instagram entra sozinho pelo robô.
+  As publis da galeria ficam em data/publis.json.
 -->
 <script id="config" type="application/json">
 {
   "email": "haubert.nathalia@gmail.com",
   "umamiId": "36e3bdd5-ab86-4afe-ba50-ea02b7d5a968",
   "planilhaCsv": "",
-  "midiaKit": "",
   "instagram": "nathaliahaubert",
   "tiktok": "nathaliahaubertt",
   "youtube": "nathaliahaubert",
   "pinterest": "haubertt",
-  "marcasTexto": "Crio conteúdo de beleza e moda num tom calmo, de conversa entre amigas. Se a sua marca combina com isso, me chama.",
-  "nichos": ["Beleza", "Moda", "Skincare", "Maquiagem"],
-  "numeros": []
+  "marcasTexto": "Moda, beleza e lifestyle mostrados de perto, do jeito que eu uso no dia a dia. Crio reels, TikToks e vídeos para o YouTube com marcas que fazem sentido na minha rotina.",
+  "numeros": [
+    {"rede": "TikTok", "valor": "21,2 mil"},
+    {"rede": "YouTube", "valor": "1,28 mil"},
+    {"rede": "Pinterest", "valor": "422"}
+  ]
 }
 </script>
 
@@ -165,10 +166,15 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
 .folha p{margin:0;font-size:15px;line-height:1.5;color:var(--tinta2)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips span{height:32px;padding:0 14px;border-radius:999px;border:1.5px solid var(--linha);display:flex;align-items:center;font-size:13px}
-.numeros{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.numeros div{background:var(--papel);border-radius:18px;padding:14px 12px;display:flex;flex-direction:column;gap:4px}
-.numeros b{font-size:20px;line-height:1.1}
+.numeros{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.numeros div{background:var(--papel);border-radius:16px;padding:12px 10px;display:flex;flex-direction:column;gap:4px}
+.numeros b{font-size:17px;line-height:1.1}
 .numeros small{font-size:12px;color:var(--suave)}
+.publis{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -20px;padding:0 20px;scroll-padding:0 20px}
+.publis::-webkit-scrollbar{display:none}
+.publi{position:relative;flex:0 0 116px;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:var(--areia);scroll-snap-align:start}
+.publi img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.publi span{position:absolute;left:6px;bottom:6px;max-width:calc(100% - 12px);background:rgba(43,29,22,.75);color:#fff;font-size:11px;font-weight:700;padding:4px 8px;border-radius:999px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rotulo{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--suave);margin-bottom:-8px}
 .parceiras{display:flex;flex-wrap:wrap;gap:8px}
 .parceiras span{height:36px;padding:0 14px;border-radius:12px;background:var(--papel);display:flex;align-items:center;font-size:14px;font-weight:500}
@@ -209,6 +215,7 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
   .prod:hover{transform:translateY(-3px)}
   .ig-grade a:hover img{transform:scale(1.06)}
   .cupom:hover{background:var(--creme)}
+  .publi:hover img{transform:scale(1.05)}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
@@ -302,13 +309,11 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
       <button class="fechar" type="button" data-fechar aria-label="Fechar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
     <p id="marcas-texto"></p>
-    <div class="chips" id="marcas-nichos"></div>
     <div class="numeros" id="marcas-numeros" hidden></div>
-    <span class="rotulo">Marcas parceiras</span>
-    <div class="parceiras" id="marcas-parceiras"></div>
-    <button type="button" class="botao cheio" id="marcas-email" data-umami-event="marcas-email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>Copiar e-mail</button>
-    <p class="email-txt" id="marcas-email-txt"></p>
-    <a class="botao borda" id="marcas-kit" target="_blank" rel="noopener" data-umami-event="midia-kit" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M5 20h14"/></svg>Mídia kit</a>
+    <span class="rotulo" id="publis-rotulo" hidden>Últimos trabalhos</span>
+    <div class="publis" id="marcas-publis"></div>
+    <a class="botao cheio" id="marcas-kit" data-umami-event="solicitar-midia-kit"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>Solicitar mídia kit</a>
+    <button type="button" class="botao borda" id="marcas-email" data-umami-event="marcas-copiar-email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>Copiar e-mail</button>
   </div>
 </dialog>
 
@@ -408,7 +413,7 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
     return out;
   }
 
-  let CUPONS = [], PRODUTOS = [], SECOES = [], aba = 0, termo = '', seguidores = null;
+  let CUPONS = [], PRODUTOS = [], SECOES = [], PUBLIS = [], aba = 0, termo = '', seguidores = null;
 
   function mostrarConteudo(c) {
     CUPONS = (c.cupons || []).filter((x) => x.cupom);
@@ -483,16 +488,18 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
   // painel de marcas
   function desenharMarcas() {
     $('#marcas-texto').textContent = CFG.marcasTexto || '';
-    $('#marcas-nichos').innerHTML = (CFG.nichos || []).map((n) => '<span>' + esc(n) + '</span>').join('');
     const nums = (CFG.numeros || []).slice();
     if (seguidores && !nums.some((n) => norm(n.rede) === 'instagram')) nums.unshift({ rede: 'Instagram', valor: formatar(seguidores) });
     $('#marcas-numeros').hidden = !nums.length;
-    $('#marcas-numeros').innerHTML = nums.slice(0, 3).map((n) => '<div><b>' + esc(n.valor) + '</b><small>' + esc(n.rede) + '</small></div>').join('');
-    const parceiras = [...new Set(CUPONS.map((c) => c.marca).filter(Boolean))];
-    $('#marcas-parceiras').innerHTML = parceiras.map((m) => '<span>' + esc(m) + '</span>').join('');
-    $('#marcas-email-txt').textContent = CFG.email;
+    $('#marcas-numeros').innerHTML = nums.slice(0, 4).map((n) => '<div><b>' + esc(n.valor) + '</b><small>' + esc(n.rede) + '</small></div>').join('');
+    $('#publis-rotulo').hidden = !PUBLIS.length;
+    $('#marcas-publis').innerHTML = PUBLIS.map((p) =>
+      '<a class="publi" href="' + esc(p.link) + '" target="_blank" rel="noopener" data-umami-event="publi" data-umami-event-marca="' + esc(p.marca) + '">' +
+      '<img src="' + esc(p.capa) + '" alt="Publi para ' + esc(p.marca) + '" loading="lazy"><span>' + esc(p.marca) + '</span></a>').join('');
     $('#marcas-email').onclick = copiarEmail;
-    const kit = $('#marcas-kit'); kit.hidden = !urlOk(CFG.midiaKit); if (urlOk(CFG.midiaKit)) kit.href = CFG.midiaKit;
+    $('#marcas-kit').target = '_blank';
+    $('#marcas-kit').href = 'mailto:' + CFG.email + '?subject=' + encodeURIComponent('Mídia kit · Nathalia Haubert') +
+      '&body=' + encodeURIComponent('Oi, Nathalia! Sou da marca ___ e gostaria de receber o seu mídia kit.\n\n');
   }
   function formatar(n) {
     n = Number(n); if (!n) return '';
@@ -570,6 +577,7 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
   fetch('data/conteudo.json', { cache: 'no-cache' }).then((r) => r.json())
     .then((c) => { if (!vivo) mostrarConteudo(c); }).catch(() => { if (!vivo) mostrarConteudo({}); });
   fetch('data/feed.json', { cache: 'no-cache' }).then((r) => r.json()).then(desenharFeed).catch(() => {});
+  fetch('data/publis.json', { cache: 'no-cache' }).then((r) => r.json()).then((p) => { PUBLIS = Array.isArray(p) ? p : []; desenharMarcas(); }).catch(() => {});
   if (urlOk(CFG.planilhaCsv)) {
     const ctl = new AbortController(); setTimeout(() => ctl.abort(), 5000);
     fetch(CFG.planilhaCsv, { signal: ctl.signal }).then((r) => r.ok ? r.text() : Promise.reject())
