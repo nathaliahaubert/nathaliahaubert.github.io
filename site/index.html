@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nathalia Haubert</title>
+<meta name="description" content="Bem-vindo ao meu closet virtual: cupons, o que eu uso e meus vídeos.">
+<meta property="og:title" content="Nathalia Haubert">
+<meta property="og:description" content="Bem-vindo ao meu closet virtual">
+<meta property="og:image" content="img/compartilhar.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F4EEE6">
+<link rel="icon" href="img/icone.png">
+<link rel="apple-touch-icon" href="img/icone.png">
+<link rel="preload" href="fontes/pinyon-script-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fontes/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<!--
+  CONFIGURAÇÃO: é só esta parte que você edita.
+  umamiId: o "Website ID" do Umami (contador de cliques). Vazio = sem contador.
+  planilhaCsv: o link CSV da planilha publicada. Vazio = usa data/conteudo.json.
+  midiaKit: link do mídia kit. Vazio = o botão some.
+  numeros: seguidores pra mostrar no painel de marcas, ex.: {"rede": "TikTok", "valor": "12 mil"}.
+           O do Instagram entra sozinho pelo robô.
+-->
+<script id="config" type="application/json">
+{
+  "email": "haubert.nathalia@gmail.com",
+  "umamiId": "",
+  "planilhaCsv": "",
+  "midiaKit": "",
+  "instagram": "nathaliahaubert",
+  "tiktok": "nathaliahaubertt",
+  "youtube": "nathaliahaubert",
+  "pinterest": "haubertt",
+  "marcasTexto": "Crio conteúdo de beleza e moda num tom calmo, de conversa entre amigas. Se a sua marca combina com isso, me chama.",
+  "nichos": ["Beleza", "Moda", "Skincare", "Maquiagem"],
+  "numeros": []
+}
+</script>
+
+<style>
+@font-face{font-family:'Pinyon Script';src:url(fontes/pinyon-script-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(fontes/dm-sans-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(fontes/dm-sans-latin-500-normal.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(fontes/dm-sans-latin-700-normal.woff2) format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'DM Mono';src:url(fontes/dm-mono-latin-500-normal.woff2) format('woff2');font-weight:500;font-display:swap}
+:root{
+  --creme:#F4EEE6; --papel:#FBF8F4; --areia:#EADFD2; --areia2:#E3D3C3;
+  --linha:#D9C7B8; --linha2:#EFE6DC; --tinta:#2B1D16; --tinta2:#4A3428;
+  --suave:#6E5A4E; --cobre:#A4532B; --cobre-esc:#8C4321; --cobre-claro:#F1DDCF;
+  --script:'Pinyon Script', cursive; --sans:'DM Sans', system-ui, -apple-system, sans-serif; --mono:'DM Mono', ui-monospace, monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--tinta);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+img{display:block;max-width:100%}
+svg{flex:none}
+:focus-visible{outline:2px solid var(--cobre);outline-offset:3px;border-radius:12px}
+[hidden]{display:none !important}
+
+.wrap{max-width:440px;margin:0 auto;padding:calc(16px + env(safe-area-inset-top)) 16px calc(32px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:10px}
+.tile{background:var(--papel);border-radius:28px}
+
+/* topo */
+.hero{position:relative;height:400px;border-radius:28px;overflow:hidden;background:var(--areia)}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.hero-cta{position:absolute;left:14px;top:14px;height:40px;padding:0 14px 0 16px;border-radius:999px;background:var(--creme);display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;transition:transform .2s}
+.hero-cta:active{transform:scale(.96)}
+.nome{padding:20px 22px}
+.nome h1{margin:0;font-family:var(--script);font-weight:400;font-size:48px;line-height:1.15}
+.nome h1 span{color:var(--cobre)}
+.nome p{margin:6px 0 0;font-size:15px;color:var(--suave)}
+.redes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.redes a{height:60px;border-radius:20px;background:var(--papel);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s}
+.redes a:active{transform:scale(.94)}
+
+/* títulos */
+.titulo{display:flex;align-items:baseline;justify-content:space-between;margin-top:22px;padding:0 4px}
+.titulo h2{margin:0;font-family:var(--script);font-weight:400;font-size:40px;line-height:1.1}
+.titulo span{font-size:12px;color:var(--suave)}
+
+/* cupons */
+.cupons{border-radius:24px;padding:4px 0;display:flex;flex-direction:column}
+.cupom{height:56px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;border-bottom:1px solid var(--linha2);transition:background .2s}
+.cupom:last-child{border-bottom:0}
+.cupom:active{background:var(--creme)}
+.cupom .marca{font-size:15px;font-weight:500}
+.cupom .cod{display:flex;align-items:center;gap:10px}
+.cupom .codigo{font-family:var(--mono);font-size:13px;color:var(--cobre-esc);letter-spacing:.02em}
+.cupom .ok{display:none;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--cobre-esc)}
+.cupom.copiado .cod{display:none}
+.cupom.copiado .ok{display:flex}
+
+/* youtube */
+.yt{margin-top:18px;background:var(--tinta);color:var(--creme);border-radius:28px;padding:14px;display:flex;flex-direction:column;gap:14px}
+.yt-topo{display:flex;align-items:center;justify-content:space-between;padding:4px 6px 0;font-size:13px;font-weight:500}
+.yt-topo span{display:flex;align-items:center;gap:8px}
+.yt-topo a{color:#EAD9CB}
+.yt-video{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:var(--tinta2);display:flex;align-items:center;justify-content:center}
+.yt-video img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.yt-video .play{position:relative;width:60px;height:60px;border-radius:50%;background:var(--cobre);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.yt-video:active .play{transform:scale(.92)}
+.yt-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt p{margin:0 6px 6px;font-size:18px;font-weight:500;line-height:1.3}
+
+/* vitrine */
+.busca{display:flex;align-items:center;gap:10px;height:52px;padding:0 18px;border-radius:999px;background:var(--papel);color:var(--suave)}
+.busca input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:16px;color:var(--tinta);outline:none}
+.busca input::placeholder{color:var(--suave)}
+.abas{display:flex;gap:8px;overflow-x:auto;padding:2px 0 4px;scrollbar-width:none}
+.abas::-webkit-scrollbar,.prateleira::-webkit-scrollbar{display:none}
+.aba{flex:none;height:36px;padding:0 16px;border-radius:999px;font-size:13px;font-weight:500;white-space:nowrap;border:1.5px solid var(--linha)}
+.aba[aria-selected="true"]{background:var(--cobre);border-color:var(--cobre);color:#fff}
+.vitrine{position:relative}
+.prateleira{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth}
+.prod{flex:0 0 calc(50% - 5px);scroll-snap-align:start;text-decoration:none;background:var(--papel);border-radius:22px;padding:8px;display:flex;flex-direction:column;gap:10px;transition:transform .2s}
+.prod:active{transform:scale(.97)}
+.prod .foto{height:150px;border-radius:16px;background:var(--areia);overflow:hidden}
+.prod .foto img{width:100%;height:100%;object-fit:cover}
+.prod .info{display:flex;flex-direction:column;gap:4px;padding:0 6px}
+.prod .pm{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--suave);min-height:14px}
+.prod .pn{font-size:14px;line-height:1.3;min-height:36px}
+.prod .pf{display:flex;align-items:center;justify-content:space-between;min-height:30px;padding:0 6px 6px}
+.prod .tag{font-family:var(--mono);font-size:12px;color:var(--cobre-esc);background:var(--cobre-claro);padding:4px 8px;border-radius:8px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.seta{position:absolute;right:-6px;top:61px;width:44px;height:44px;border-radius:50%;background:var(--cobre);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(43,29,22,.18);transition:opacity .2s,transform .2s}
+.seta:active{transform:scale(.92)}
+.seta.fim{opacity:0;pointer-events:none}
+.vazio{margin:4px;font-size:14px;color:var(--suave)}
+
+/* feeds */
+.feed{padding:14px;display:flex;flex-direction:column;gap:12px}
+#instagram{margin-top:18px}
+.feed-topo{display:flex;align-items:center;gap:10px;padding:2px 4px 0}
+.feed-topo .q{flex:1;display:flex;flex-direction:column;gap:1px;min-width:0}
+.feed-topo b{font-size:14px}
+.feed-topo small{font-size:12px;color:var(--suave)}
+.seguir{height:34px;padding:0 14px;border-radius:999px;background:var(--cobre);color:#fff;text-decoration:none;display:flex;align-items:center;font-size:13px;font-weight:700}
+.ig-grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.ig-grade a{aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:var(--areia)}
+.ig-grade img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.tt-vaga{min-height:120px;border-radius:12px;overflow:hidden}
+.tt-vaga blockquote{margin:0 !important}
+
+/* rodapé */
+.pe{margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:12px;color:var(--suave)}
+.patinha{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--linha);display:flex;align-items:center;justify-content:center;color:var(--cobre-esc);transition:transform .3s}
+.patinha:hover{transform:rotate(-12deg)}
+.patinha:active{transform:scale(.9)}
+
+/* painéis */
+dialog{border:0;padding:0;background:transparent;color:var(--tinta);max-width:none;max-height:none}
+dialog::backdrop{background:rgba(43,29,22,.5)}
+.folha{margin:auto auto 0;width:min(100%,440px)}
+.folha .dentro{background:var(--creme);border-radius:28px 28px 0 0;padding:12px 20px calc(24px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:18px;max-height:92vh;overflow-y:auto}
+.folha[open] .dentro{animation:sobe .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes sobe{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.alca{align-self:center;width:40px;height:4px;border-radius:4px;background:var(--linha)}
+.folha-topo{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.folha h2{margin:0;font-family:var(--script);font-weight:400;font-size:40px;line-height:1.15}
+.folha h2 span{color:var(--cobre)}
+.fechar{flex:none;width:44px;height:44px;border-radius:50%;background:var(--papel);display:flex;align-items:center;justify-content:center}
+.folha p{margin:0;font-size:15px;line-height:1.5;color:var(--tinta2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{height:32px;padding:0 14px;border-radius:999px;border:1.5px solid var(--linha);display:flex;align-items:center;font-size:13px}
+.numeros{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.numeros div{background:var(--papel);border-radius:18px;padding:14px 12px;display:flex;flex-direction:column;gap:4px}
+.numeros b{font-size:20px;line-height:1.1}
+.numeros small{font-size:12px;color:var(--suave)}
+.rotulo{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--suave);margin-bottom:-8px}
+.parceiras{display:flex;flex-wrap:wrap;gap:8px}
+.parceiras span{height:36px;padding:0 14px;border-radius:12px;background:var(--papel);display:flex;align-items:center;font-size:14px;font-weight:500}
+.botao{height:52px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:700;text-decoration:none}
+.botao.cheio{background:var(--cobre);color:#fff}
+.botao.borda{border:1.5px solid var(--linha);font-weight:500;font-size:14px}
+.modal{margin:auto;width:min(calc(100% - 40px),400px)}
+.modal .dentro{background:var(--papel);border-radius:28px;padding:12px 12px 20px;display:flex;flex-direction:column;gap:16px}
+.modal[open] .dentro{animation:surge .4s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes surge{from{transform:scale(.85) rotate(-3deg);opacity:0}to{transform:none;opacity:1}}
+.modal img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:20px}
+.modal .txt{padding:0 8px;display:flex;flex-direction:column;gap:6px}
+.modal .txt p{margin:0}
+.modal .grande{font-family:var(--script);font-size:36px;line-height:1.2}
+.modal .grande span{color:var(--cobre)}
+.modal .peq{font-size:14px;color:var(--suave)}
+.modal .botao{margin:0 8px}
+
+/* aviso */
+.aviso{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:var(--tinta);color:var(--creme);padding:12px 18px;border-radius:999px;font-size:14px;font-weight:500;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:50;white-space:nowrap}
+.aviso.on{opacity:1;transform:translate(-50%,0)}
+
+/* aparecer ao rolar */
+.js .surge{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.js .surge.vis{opacity:1;transform:none}
+
+/* cursor (só no computador) */
+.cursor{display:none}
+@media (hover:hover) and (pointer:fine){
+  .cursor-on body, .cursor-on a, .cursor-on button{cursor:none}
+  .cursor-on .cursor{display:block;position:fixed;left:0;top:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--cobre);pointer-events:none;z-index:100;transition:width .25s,height .25s,margin .25s,background .25s,opacity .2s}
+  .cursor-on .cursor.grande{width:54px;height:54px;margin:-27px 0 0 -27px;background:rgba(164,83,43,.16);border:1px solid rgba(164,83,43,.5)}
+  .cursor-on .cursor.fora{opacity:0}
+  .redes a:hover{background:var(--cobre-claro)}
+  .prod:hover{transform:translateY(-3px)}
+  .ig-grade a:hover img{transform:scale(1.06)}
+  .cupom:hover{background:var(--creme)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+  .js .surge{opacity:1;transform:none}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<div class="cursor" aria-hidden="true"></div>
+
+<main class="wrap">
+  <section class="hero">
+    <img src="img/nath.jpg" alt="Nathalia sorrindo, com o cabelo ruivo solto" width="900" height="1000" fetchpriority="high">
+    <button class="hero-cta" type="button" data-abrir="marcas" data-umami-event="vamos-trabalhar-juntos">Vamos trabalhar juntos?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></button>
+  </section>
+
+  <section class="tile nome">
+    <h1>Nathalia <span>Haubert</span></h1>
+    <p>Bem-vindo ao meu closet virtual</p>
+  </section>
+
+  <nav class="redes" aria-label="Redes sociais">
+    <a id="r-instagram" aria-label="Instagram" data-umami-event="rede" data-umami-event-rede="instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".7" fill="currentColor"/></svg></a>
+    <a id="r-tiktok" aria-label="TikTok" data-umami-event="rede" data-umami-event-rede="tiktok"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg></a>
+    <a id="r-youtube" aria-label="YouTube" data-umami-event="rede" data-umami-event-rede="youtube"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.5v5l4.5-2.5z" fill="currentColor"/></svg></a>
+    <a id="r-pinterest" aria-label="Pinterest" data-umami-event="rede" data-umami-event-rede="pinterest"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10.6 20.5l1.6-7.2"/><path d="M9 14.2c-.6-.6-.9-1.4-.9-2.4 0-2.4 1.8-4.3 4.3-4.3 2.3 0 3.8 1.6 3.8 3.6 0 2.5-1.3 4.3-3 4.3-.9 0-1.6-.6-1.4-1.5"/></svg></a>
+    <a id="r-email" aria-label="E-mail" data-umami-event="rede" data-umami-event-rede="email"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></a>
+  </nav>
+
+  <section id="cupons" class="surge">
+    <div class="titulo"><h2>Cupons</h2><span>Toque pra copiar</span></div>
+    <div class="tile cupons" id="lista-cupons"></div>
+  </section>
+
+  <section class="yt surge" id="youtube" hidden>
+    <div class="yt-topo">
+      <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.5v5l4.5-2.5z" fill="currentColor"/></svg>Último vídeo no YouTube</span>
+      <a id="yt-canal" data-umami-event="rede" data-umami-event-rede="youtube">Ver canal</a>
+    </div>
+    <button class="yt-video" id="yt-video" type="button" aria-label="Assistir o último vídeo" data-umami-event="youtube-play">
+      <img id="yt-capa" alt="" loading="lazy">
+      <span class="play"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.5v11l8.5-5.5z" fill="#fff"/></svg></span>
+    </button>
+    <p id="yt-titulo"></p>
+  </section>
+
+  <section id="vitrine-sec" class="surge">
+    <div class="titulo"><h2>O que eu uso</h2></div>
+  </section>
+  <label class="busca surge">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+    <input id="busca" type="search" placeholder="Qual produto é esse?" aria-label="Buscar produto" autocomplete="off">
+  </label>
+  <div class="abas surge" id="abas" role="tablist" aria-label="Seções"></div>
+  <div class="vitrine surge">
+    <div class="prateleira" id="prateleira"></div>
+    <button class="seta" id="seta" type="button" aria-label="Ver mais produtos"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+  </div>
+  <p class="vazio" id="vazio" hidden>Esse ainda não está aqui, mas pode me perguntar nos comentários.</p>
+
+  <section class="tile feed surge" id="instagram">
+    <div class="feed-topo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".7" fill="currentColor"/></svg>
+      <span class="q"><b id="ig-user"></b><small>Últimos posts</small></span>
+      <a class="seguir" id="ig-seguir" data-umami-event="seguir" data-umami-event-rede="instagram">Seguir</a>
+    </div>
+    <div class="ig-grade" id="ig-grade" hidden></div>
+  </section>
+
+  <section class="tile feed surge" id="tiktok">
+    <div class="feed-topo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg>
+      <span class="q"><b id="tt-user"></b><small>Últimos vídeos no TikTok</small></span>
+      <a class="seguir" id="tt-seguir" data-umami-event="seguir" data-umami-event-rede="tiktok">Seguir</a>
+    </div>
+    <div class="tt-vaga" id="tt-vaga"></div>
+  </section>
+
+  <footer class="pe">
+    <button class="patinha" type="button" data-abrir="gatos" aria-label="Tem uma surpresa escondida aqui" data-umami-event="ozzy-e-maze"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="6.5" cy="10" r="1.8"/><circle cx="10" cy="6.2" r="1.8"/><circle cx="14.5" cy="6.2" r="1.8"/><circle cx="18" cy="10" r="1.8"/><path d="M12.3 11.5c-2.6 0-5.3 3.4-5.3 5.8 0 1.5 1.1 2.4 2.5 2.4 1.2 0 1.8-.6 2.8-.6s1.6.6 2.8.6c1.4 0 2.5-.9 2.5-2.4 0-2.4-2.7-5.8-5.3-5.8z"/></svg></button>
+    <span>© <span id="ano">2026</span> Nathalia Haubert</span>
+  </footer>
+</main>
+
+<dialog class="folha" id="marcas" aria-labelledby="marcas-titulo">
+  <div class="dentro">
+    <span class="alca" aria-hidden="true"></span>
+    <div class="folha-topo">
+      <h2 id="marcas-titulo">Vamos trabalhar <span>juntos?</span></h2>
+      <button class="fechar" type="button" data-fechar aria-label="Fechar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <p id="marcas-texto"></p>
+    <div class="chips" id="marcas-nichos"></div>
+    <div class="numeros" id="marcas-numeros" hidden></div>
+    <span class="rotulo">Marcas parceiras</span>
+    <div class="parceiras" id="marcas-parceiras"></div>
+    <a class="botao cheio" id="marcas-email" data-umami-event="marcas-email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>Mandar e-mail</a>
+    <a class="botao borda" id="marcas-kit" target="_blank" rel="noopener" data-umami-event="midia-kit" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M5 20h14"/></svg>Mídia kit</a>
+  </div>
+</dialog>
+
+<dialog class="modal" id="gatos" aria-label="Ozzy e Maze">
+  <div class="dentro">
+    <img src="img/gatos.jpg" alt="Ozzy, gato laranja e branco, dormindo abraçado com a Maze, gata escaminha" loading="lazy">
+    <div class="txt">
+      <p class="grande">Você achou o <span>Ozzy</span> e a <span>Maze</span></p>
+      <p class="peq">Eles mandaram um oi.</p>
+    </div>
+    <button class="botao borda" type="button" data-fechar>Voltar</button>
+  </div>
+</dialog>
+
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+  const CFG = JSON.parse(document.getElementById('config').textContent);
+  const $ = (s) => document.querySelector(s);
+  const norm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  const esc = (s) => String(s || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const urlOk = (u) => /^https?:\/\//i.test(String(u || '').trim());
+  const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ICON = {
+    copiar: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6E5A4E" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>',
+    ok: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    seta: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2B1D16" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>'
+  };
+
+  // contador de cliques (Umami)
+  if (CFG.umamiId) {
+    const s = document.createElement('script');
+    s.defer = true; s.src = 'https://cloud.umami.is/script.js'; s.dataset.websiteId = CFG.umamiId;
+    document.head.appendChild(s);
+  }
+
+  // links das redes
+  const links = {
+    instagram: 'https://www.instagram.com/' + CFG.instagram,
+    tiktok: 'https://www.tiktok.com/@' + CFG.tiktok,
+    youtube: 'https://www.youtube.com/@' + CFG.youtube,
+    pinterest: 'https://pinterest.com/' + CFG.pinterest,
+    email: 'mailto:' + CFG.email
+  };
+  for (const k in links) { const a = $('#r-' + k); if (a) { a.href = links[k]; if (k !== 'email') { a.target = '_blank'; a.rel = 'noopener'; } } }
+  $('#yt-canal').href = links.youtube;
+  $('#ig-seguir').href = links.instagram; $('#ig-user').textContent = '@' + CFG.instagram;
+  $('#tt-seguir').href = links.tiktok; $('#tt-user').textContent = '@' + CFG.tiktok;
+  $('#ano').textContent = new Date().getFullYear();
+
+  // copiar
+  function copiar(txt) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(txt).catch(() => copiarVelho(txt));
+    copiarVelho(txt); return Promise.resolve();
+  }
+  function copiarVelho(txt) {
+    const t = document.createElement('textarea');
+    t.value = txt; t.setAttribute('readonly', ''); t.style.cssText = 'position:fixed;opacity:0;top:0';
+    document.body.appendChild(t); t.select(); t.setSelectionRange(0, 99);
+    try { document.execCommand('copy'); } catch (e) {}
+    t.remove();
+  }
+  let avisoT;
+  function avisar(msg) {
+    const a = $('#aviso'); a.textContent = msg; a.classList.add('on');
+    clearTimeout(avisoT); avisoT = setTimeout(() => a.classList.remove('on'), 2200);
+  }
+
+  // conteúdo (planilha ou arquivo)
+  function lerCSV(t) {
+    const linhas = []; let linha = [], campo = '', aspas = false;
+    for (let i = 0; i < t.length; i++) {
+      const c = t[i];
+      if (aspas) { if (c === '"') { if (t[i + 1] === '"') { campo += '"'; i++; } else aspas = false; } else campo += c; }
+      else if (c === '"') aspas = true;
+      else if (c === ',') { linha.push(campo); campo = ''; }
+      else if (c === '\n') { linha.push(campo); linhas.push(linha); linha = []; campo = ''; }
+      else if (c !== '\r') campo += c;
+    }
+    if (campo || linha.length) { linha.push(campo); linhas.push(linha); }
+    return linhas;
+  }
+  function daPlanilha(linhas) {
+    const cab = (linhas.shift() || []).map(norm);
+    const col = (r, ...nomes) => { for (const n of nomes) { const i = cab.indexOf(n); if (i > -1 && r[i]) return r[i].trim(); } return ''; };
+    const out = { cupons: [], produtos: [] };
+    for (const r of linhas) {
+      const tipo = norm(col(r, 'tipo'));
+      if (!tipo) continue;
+      const item = { secao: col(r, 'secao'), marca: col(r, 'marca'), nome: col(r, 'nome'), cupom: col(r, 'cupom'), link: col(r, 'link'), foto: col(r, 'foto'), linkCurto: col(r, 'link curto', 'link_curto') };
+      (tipo.startsWith('cupom') ? out.cupons : out.produtos).push(item);
+    }
+    return out;
+  }
+
+  let CUPONS = [], PRODUTOS = [], SECOES = [], aba = 0, termo = '', seguidores = null;
+
+  function mostrarConteudo(c) {
+    CUPONS = (c.cupons || []).filter((x) => x.cupom);
+    PRODUTOS = (c.produtos || []).filter((x) => x.nome && x.foto); // sem foto, o produto não aparece
+    SECOES = [...new Set(PRODUTOS.map((p) => p.secao || 'Outros'))];
+    if (aba >= SECOES.length) aba = 0;
+    desenharCupons(); desenharAbas(); desenharPrateleira(); desenharMarcas();
+  }
+
+  function desenharCupons() {
+    const box = $('#lista-cupons');
+    $('#cupons').hidden = !CUPONS.length;
+    box.innerHTML = CUPONS.map((c, i) =>
+      '<button type="button" class="cupom" data-i="' + i + '" data-umami-event="cupom" data-umami-event-marca="' + esc(c.marca) + '" aria-label="Copiar o cupom ' + esc(c.cupom) + ', ' + esc(c.marca) + '">' +
+      '<span class="marca">' + esc(c.marca) + '</span>' +
+      '<span class="cod"><span class="codigo">' + esc(c.cupom) + '</span>' + ICON.copiar + '</span>' +
+      '<span class="ok">' + ICON.ok + 'Copiado</span></button>').join('');
+  }
+  $('#lista-cupons').addEventListener('click', (e) => {
+    const b = e.target.closest('.cupom'); if (!b) return;
+    const c = CUPONS[b.dataset.i];
+    document.querySelectorAll('.cupom.copiado').forEach((x) => x.classList.remove('copiado'));
+    b.classList.add('copiado');
+    copiar(c.cupom);
+    if (urlOk(c.link)) { avisar('Cupom copiado, abrindo a loja'); setTimeout(() => location.assign(c.link), 900); }
+    else avisar('Cupom ' + c.cupom + ' copiado');
+  });
+
+  function desenharAbas() {
+    const box = $('#abas');
+    box.hidden = SECOES.length < 2;
+    box.innerHTML = SECOES.map((s, i) => '<button type="button" class="aba" role="tab" data-i="' + i + '" aria-selected="' + (!termo && i === aba) + '">' + esc(s) + '</button>').join('');
+  }
+  $('#abas').addEventListener('click', (e) => {
+    const b = e.target.closest('.aba'); if (!b) return;
+    aba = +b.dataset.i; termo = ''; $('#busca').value = '';
+    desenharAbas(); desenharPrateleira();
+  });
+  $('#busca').addEventListener('input', (e) => { termo = norm(e.target.value); desenharAbas(); desenharPrateleira(); });
+
+  function desenharPrateleira() {
+    const lista = termo
+      ? PRODUTOS.filter((p) => norm(p.marca + ' ' + p.nome + ' ' + p.secao).includes(termo))
+      : PRODUTOS.filter((p) => (p.secao || 'Outros') === SECOES[aba]);
+    const box = $('#prateleira');
+    box.innerHTML = lista.map((p) => {
+      const i = PRODUTOS.indexOf(p);
+      const foto = '<img src="' + esc(p.foto) + '" alt="' + esc(p.nome) + '" loading="lazy">';
+      const tem = urlOk(p.link);
+      return '<a class="prod"' + (tem ? ' href="' + esc(p.link) + '"' : '') + ' data-i="' + i + '" data-umami-event="produto" data-umami-event-nome="' + esc(p.nome) + '">' +
+        '<span class="foto">' + foto + '</span>' +
+        '<span class="info"><span class="pm">' + esc(p.marca) + '</span><span class="pn">' + esc(p.nome) + '</span></span>' +
+        '<span class="pf">' + (p.cupom ? '<span class="tag">' + esc(p.cupom) + '</span>' : '<span></span>') + (tem ? ICON.seta : '') + '</span></a>';
+    }).join('');
+    box.scrollLeft = 0;
+    $('#vazio').hidden = lista.length > 0;
+    $('#seta').hidden = lista.length <= 2;
+    atualizarSeta();
+  }
+  $('#prateleira').addEventListener('click', (e) => {
+    const a = e.target.closest('.prod'); if (!a || !a.href) return;
+    const p = PRODUTOS[a.dataset.i];
+    if (p && p.cupom) { e.preventDefault(); copiar(p.cupom); avisar('Cupom copiado, abrindo a loja'); setTimeout(() => location.assign(p.link), 900); }
+  });
+  function atualizarSeta() {
+    const s = $('#prateleira');
+    $('#seta').classList.toggle('fim', s.scrollLeft + s.clientWidth >= s.scrollWidth - 4);
+  }
+  $('#prateleira').addEventListener('scroll', atualizarSeta, { passive: true });
+  $('#seta').addEventListener('click', () => { const s = $('#prateleira'); s.scrollBy({ left: s.clientWidth, behavior: reduz ? 'auto' : 'smooth' }); });
+
+  // painel de marcas
+  function desenharMarcas() {
+    $('#marcas-texto').textContent = CFG.marcasTexto || '';
+    $('#marcas-nichos').innerHTML = (CFG.nichos || []).map((n) => '<span>' + esc(n) + '</span>').join('');
+    const nums = (CFG.numeros || []).slice();
+    if (seguidores && !nums.some((n) => norm(n.rede) === 'instagram')) nums.unshift({ rede: 'Instagram', valor: formatar(seguidores) });
+    $('#marcas-numeros').hidden = !nums.length;
+    $('#marcas-numeros').innerHTML = nums.slice(0, 3).map((n) => '<div><b>' + esc(n.valor) + '</b><small>' + esc(n.rede) + '</small></div>').join('');
+    const parceiras = [...new Set(CUPONS.map((c) => c.marca).filter(Boolean))];
+    $('#marcas-parceiras').innerHTML = parceiras.map((m) => '<span>' + esc(m) + '</span>').join('');
+    $('#marcas-email').href = 'mailto:' + CFG.email + '?subject=' + encodeURIComponent('Parceria com Nathalia Haubert');
+    const kit = $('#marcas-kit'); kit.hidden = !urlOk(CFG.midiaKit); if (urlOk(CFG.midiaKit)) kit.href = CFG.midiaKit;
+  }
+  function formatar(n) {
+    n = Number(n); if (!n) return '';
+    if (n >= 1e6) return (n / 1e6).toFixed(1).replace('.', ',').replace(',0', '') + ' mi';
+    if (n >= 1e3) return (n / 1e3).toFixed(n >= 1e4 ? 0 : 1).replace('.', ',').replace(',0', '') + ' mil';
+    return String(n);
+  }
+
+  // abrir e fechar painéis
+  document.addEventListener('click', (e) => {
+    const abre = e.target.closest('[data-abrir]');
+    if (abre) { const d = document.getElementById(abre.dataset.abrir); if (d && !d.open) d.showModal(); return; }
+    const fecha = e.target.closest('[data-fechar]');
+    if (fecha) { fecha.closest('dialog').close(); return; }
+    if (e.target.tagName === 'DIALOG') e.target.close();
+  });
+
+  // YouTube, Instagram (o robô atualiza data/feed.json)
+  function desenharFeed(f) {
+    const yt = f && f.youtube;
+    if (yt && yt.id) {
+      $('#youtube').hidden = false;
+      const capa = $('#yt-capa');
+      capa.src = 'https://i.ytimg.com/vi/' + encodeURIComponent(yt.id) + '/maxresdefault.jpg';
+      capa.onerror = () => { capa.onerror = null; capa.src = 'https://i.ytimg.com/vi/' + encodeURIComponent(yt.id) + '/hqdefault.jpg'; };
+      $('#yt-titulo').textContent = yt.titulo || '';
+      $('#yt-video').onclick = function () {
+        this.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(yt.id) + '?autoplay=1&rel=0&playsinline=1" title="' + esc(yt.titulo) + '" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+        this.onclick = null;
+      };
+    }
+    const posts = (f && f.instagram) || [];
+    const grade = $('#ig-grade');
+    if (posts.length) {
+      grade.hidden = false;
+      grade.innerHTML = posts.slice(0, 6).map((p) =>
+        '<a href="' + esc(p.link) + '" target="_blank" rel="noopener" data-umami-event="post-instagram"><img src="' + esc(p.img) + '" alt="' + esc(p.legenda || 'Post do Instagram') + '" loading="lazy"></a>').join('');
+    }
+    if (f && f.instagramSeguidores) { seguidores = f.instagramSeguidores; desenharMarcas(); }
+  }
+
+  // TikTok: o embed oficial só carrega quando você chega perto
+  function carregarTikTok() {
+    const vaga = $('#tt-vaga');
+    vaga.innerHTML = '<blockquote class="tiktok-embed" cite="' + links.tiktok + '" data-unique-id="' + esc(CFG.tiktok) + '" data-embed-type="creator" style="max-width:780px;min-width:288px"><section><a target="_blank" rel="noopener" href="' + links.tiktok + '?refer=creator_embed">@' + esc(CFG.tiktok) + '</a></section></blockquote>';
+    const s = document.createElement('script'); s.async = true; s.src = 'https://www.tiktok.com/embed.js'; document.body.appendChild(s);
+  }
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); carregarTikTok(); } }, { rootMargin: '500px' });
+    io.observe($('#tiktok'));
+    const ver = new IntersectionObserver((es) => es.forEach((x) => { if (x.isIntersecting) { x.target.classList.add('vis'); ver.unobserve(x.target); } }), { threshold: 0.12 });
+    document.querySelectorAll('.surge').forEach((el) => ver.observe(el));
+  } else {
+    carregarTikTok();
+    document.querySelectorAll('.surge').forEach((el) => el.classList.add('vis'));
+  }
+
+  // cursor no computador
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reduz) {
+    document.documentElement.classList.add('cursor-on');
+    const bola = document.querySelector('.cursor');
+    let x = -100, y = -100, cx = -100, cy = -100;
+    addEventListener('mousemove', (e) => {
+      x = e.clientX; y = e.clientY;
+      bola.classList.remove('fora');
+      bola.classList.toggle('grande', !!e.target.closest('a, button, input, label'));
+    }, { passive: true });
+    document.addEventListener('mouseleave', () => bola.classList.add('fora'));
+    (function anda() { cx += (x - cx) * 0.2; cy += (y - cy) * 0.2; bola.style.transform = 'translate(' + cx + 'px,' + cy + 'px)'; requestAnimationFrame(anda); })();
+  }
+
+  // carregar dados
+  let vivo = false; // true quando a planilha respondeu (ela vale mais que o arquivo)
+  fetch('data/conteudo.json', { cache: 'no-cache' }).then((r) => r.json())
+    .then((c) => { if (!vivo) mostrarConteudo(c); }).catch(() => { if (!vivo) mostrarConteudo({}); });
+  fetch('data/feed.json', { cache: 'no-cache' }).then((r) => r.json()).then(desenharFeed).catch(() => {});
+  if (urlOk(CFG.planilhaCsv)) {
+    const ctl = new AbortController(); setTimeout(() => ctl.abort(), 5000);
+    fetch(CFG.planilhaCsv, { signal: ctl.signal }).then((r) => r.ok ? r.text() : Promise.reject())
+      .then((t) => { const c = daPlanilha(lerCSV(t)); if (c.cupons.length || c.produtos.length) { vivo = true; mostrarConteudo(c); } })
+      .catch(() => {});
+  }
+})();
+</script>
+</body>
+</html>

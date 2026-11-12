@@ -1,0 +1,120 @@
+{
+  "cupons": [
+    {
+      "marca": "M·A·C Cosmetics",
+      "cupom": "SOUMAC-1791",
+      "link": "https://www.maccosmetics.com.br/",
+      "linkCurto": ""
+    },
+    {
+      "marca": "Mari Maria",
+      "cupom": "NATHALIAHAUBERT10",
+      "link": "https://www.marimariamakeup.com/",
+      "linkCurto": ""
+    },
+    {
+      "marca": "Creamy",
+      "cupom": "CMHAUBERT",
+      "link": "https://www.creamy.com.br/",
+      "linkCurto": ""
+    },
+    {
+      "marca": "The Joy Lab",
+      "cupom": "TJLHAUBERT",
+      "link": "https://www.thejoylab.com.br/",
+      "linkCurto": ""
+    }
+  ],
+  "produtos": [
+    {
+      "secao": "Skincare",
+      "marca": "Creamy",
+      "nome": "Duo Hidratante Acalma & Repara",
+      "cupom": "CMHAUBERT",
+      "link": "https://www.creamy.com.br/duo-hidratante-acalma-e-repara/p",
+      "foto": "img/produtos/creamy-duo-hidratante.jpg",
+      "linkCurto": ""
+    },
+    {
+      "secao": "Skincare",
+      "marca": "Creamy",
+      "nome": "Protetor Solar Watery Fluid FPS 50",
+      "cupom": "CMHAUBERT",
+      "link": "https://www.creamy.com.br/protetor-solar-watery-fluid-fps-50/p",
+      "foto": "img/produtos/creamy-protetor-watery-fluid.jpg",
+      "linkCurto": ""
+    },
+    {
+      "secao": "Skincare",
+      "marca": "The Joy Lab",
+      "nome": "Powerful Force Sérum Facial",
+      "cupom": "TJLHAUBERT",
+      "link": "https://www.thejoylab.com.br/powerfulforce-serum/p",
+      "foto": "img/produtos/joylab-powerful-force.jpg",
+      "linkCurto": ""
+    },
+    {
+      "secao": "Skincare",
+      "marca": "The Joy Lab",
+      "nome": "AquaPro Cooler Gel Facial",
+      "cupom": "TJLHAUBERT",
+      "link": "https://www.thejoylab.com.br/aquapro-cooler/p",
+      "foto": "img/produtos/joylab-aquapro-cooler.jpg",
+      "linkCurto": ""
+    },
+    {
+      "secao": "Skincare",
+      "marca": "Creamy",
+      "nome": "Vitamina C Gold Pura",
+      "cupom": "CMHAUBERT",
+      "link": "https://www.creamy.com.br/vitamina-c-gold/p",
+      "foto": "img/produtos/creamy-vitamina-c-gold.jpg",
+      "linkCurto": ""
+    },
+    {
+      "secao": "Setup de gravação",
+      "marca": "Hollyland",
+      "nome": "Microfone Lark M2 Duo Combo",
+      "cupom": "",
+      "link": "",
+      "foto": "",
+      "linkCurto": ""
+    },
+    {
+      "secao": "Setup de gravação",
+      "marca": "Ulanzi",
+      "nome": "Led C01",
+      "cupom": "",
+      "link": "",
+      "foto": "",
+      "linkCurto": ""
+    },
+    {
+      "secao": "Setup de gravação",
+      "marca": "",
+      "nome": "Led Portátil",
+      "cupom": "",
+      "link": "",
+      "foto": "",
+      "linkCurto": ""
+    },
+    {
+      "secao": "Setup de gravação",
+      "marca": "",
+      "nome": "Luminária Led",
+      "cupom": "",
+      "link": "",
+      "foto": "",
+      "linkCurto": ""
+    },
+    {
+      "secao": "Setup de gravação",
+      "marca": "",
+      "nome": "Led Haste Dupla",
+      "cupom": "",
+      "link": "",
+      "foto": "",
+      "linkCurto": ""
+    }
+  ]
+}
