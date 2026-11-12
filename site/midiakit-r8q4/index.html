@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Mídia kit · Nathalia Haubert</title>
+<link rel="icon" href="../img/icone.png">
+<link rel="preload" href="../fontes/pinyon-script-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Pinyon Script';src:url(../fontes/pinyon-script-latin-400-normal.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'DM Sans';src:url(../fontes/dm-sans-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(../fontes/dm-sans-latin-500-normal.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(../fontes/dm-sans-latin-700-normal.woff2) format('woff2');font-weight:700;font-display:swap}
+:root{--creme:#F4EEE6;--papel:#FBF8F4;--areia:#EADFD2;--linha:#D9C7B8;--tinta:#2B1D16;--tinta2:#4A3428;--suave:#6E5A4E;--cobre:#A4532B;--cobre-esc:#8C4321;--cobre-claro:#F1DDCF;--script:'Pinyon Script',cursive;--sans:'DM Sans',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--creme);color:var(--tinta);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+.wrap{max-width:920px;margin:0 auto;padding:calc(16px + env(safe-area-inset-top)) 16px 48px;display:flex;flex-direction:column;gap:14px}
+.tile{background:var(--papel);border-radius:28px}
+h2{margin:0;font-family:var(--script);font-weight:400;font-size:44px;line-height:1.1}
+h2 span{color:var(--cobre)}
+.sec{padding:26px 24px;display:flex;flex-direction:column;gap:18px}
+.nota{font-size:12px;color:var(--suave)}
+
+/* capa */
+.capa{display:grid;grid-template-columns:1fr;gap:14px}
+.capa .foto{border-radius:28px;overflow:hidden;aspect-ratio:4/5;background:var(--areia)}
+.capa .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.capa .txt{padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px}
+.capa h1{margin:0;font-family:var(--script);font-weight:400;font-size:60px;line-height:1.05}
+.capa h1 span{color:var(--cobre)}
+.capa .kit{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.selo{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;background:var(--cobre-claro);color:var(--cobre-esc);font-size:13px;font-weight:700}
+.selo i{width:8px;height:8px;border-radius:50%;background:var(--cobre);display:block}
+
+/* quem sou */
+.quem{display:grid;grid-template-columns:1fr;gap:14px}
+.quem .foto{border-radius:28px;overflow:hidden;aspect-ratio:3/4;background:var(--areia)}
+.quem .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.quem p{margin:0;font-size:17px;line-height:1.6;color:var(--tinta2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{height:34px;padding:0 16px;border-radius:999px;border:1.5px solid var(--linha);display:flex;align-items:center;font-size:14px;font-weight:500}
+
+/* números */
+.redes{display:grid;grid-template-columns:1fr;gap:10px}
+.rede{background:var(--creme);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.rede-topo{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.rede-topo b{font-size:15px}
+.rede-topo small{font-size:12px;color:var(--suave)}
+.grande{font-size:36px;font-weight:700;line-height:1;letter-spacing:-.01em}
+.grande small{display:block;font-size:12px;font-weight:500;color:var(--suave);letter-spacing:0;margin-top:6px}
+.mini{display:flex;gap:18px;flex-wrap:wrap}
+.mini div{display:flex;flex-direction:column;gap:2px}
+.mini b{font-size:18px}
+.mini small{font-size:12px;color:var(--suave)}
+.aud{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.aud div{background:var(--creme);border-radius:20px;padding:16px 12px;display:flex;flex-direction:column;gap:4px}
+.aud b{font-size:26px;line-height:1}
+.aud small{font-size:12px;color:var(--suave)}
+
+/* pilares */
+.pilar{display:flex;flex-direction:column;gap:10px}
+.pilar h3{margin:0;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cobre-esc)}
+.mosaico{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.mosaico img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;background:var(--areia)}
+
+/* publis */
+.publis{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -24px;padding:0 24px;scroll-padding:0 24px}
+.publis::-webkit-scrollbar{display:none}
+.publi{position:relative;flex:0 0 140px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:var(--areia);scroll-snap-align:start}
+.publi img{width:100%;height:100%;object-fit:cover}
+.publi span{position:absolute;left:8px;bottom:8px;max-width:calc(100% - 16px);background:rgba(43,29,22,.75);color:#fff;font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* contato */
+.contato{background:var(--tinta);color:var(--creme);border-radius:28px;padding:30px 24px;display:flex;flex-direction:column;gap:16px}
+.contato h2 span{color:#E7A57F}
+.contato p{margin:0;color:#EAD9CB;font-size:15px;line-height:1.5}
+.botoes{display:flex;flex-wrap:wrap;gap:10px}
+.botao{height:52px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:700;text-decoration:none}
+.botao.cheio{background:var(--cobre);color:#fff}
+.botao.borda{border:1.5px solid rgba(234,217,203,.5);color:var(--creme);font-weight:500}
+.aviso{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:var(--tinta);color:var(--creme);padding:12px 18px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;white-space:nowrap;z-index:9}
+.aviso.on{opacity:1;transform:translate(-50%,0)}
+
+@media (min-width:760px){
+  .capa{grid-template-columns:1.1fr 1fr}
+  .capa .foto{aspect-ratio:auto;min-height:560px}
+  .capa .txt{padding:40px}
+  .capa h1{font-size:76px}
+  .quem{grid-template-columns:1fr 1.2fr}
+  .quem .foto{aspect-ratio:auto;min-height:100%}
+  .redes{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mosaico{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .sec{padding:34px 36px}
+  .publis{margin:0 -36px;padding:0 36px}
+}
+@media print{
+  @page{size:A4;margin:10mm}
+  body{background:#fff}
+  .wrap{max-width:none;padding:0;gap:10px}
+  .no-print,.aviso{display:none !important}
+  .tile,.rede,.aud div,.contato{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .capa{grid-template-columns:1.1fr 1fr}.capa .foto{aspect-ratio:auto;height:250mm}
+  .quem{grid-template-columns:1fr 1.2fr}.redes{grid-template-columns:repeat(3,1fr)}.mosaico{grid-template-columns:repeat(4,1fr)}
+  .publis{flex-wrap:wrap;overflow:visible;margin:0;padding:0}.publi{flex:0 0 22%}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <section class="capa">
+    <div class="foto"><img src="../img/kit/01.jpg" alt="Retrato de Nathalia Haubert" fetchpriority="high"></div>
+    <div class="tile txt">
+      <span class="selo"><i></i><span id="atualizado">Atualizado</span></span>
+      <h1>Nathalia <span>Haubert</span></h1>
+      <span class="kit">Mídia kit</span>
+      <span class="nota">@nathaliahaubert no Instagram e YouTube · @nathaliahaubertt no TikTok</span>
+    </div>
+  </section>
+
+  <section class="quem">
+    <div class="foto"><img src="../img/kit/07.jpg" alt="Nathalia de look marrom na rua" loading="lazy"></div>
+    <div class="tile sec">
+      <h2>Quem <span>sou</span></h2>
+      <p>Sou a Nathalia, criadora de conteúdo de moda, beleza e lifestyle. Mostro o meu closet virtual de perto, do jeito que eu uso no dia a dia, e indico só o que realmente entra na minha rotina. Meu público chega pelos looks e pelas makes e fica pela conversa, que é tranquila e sem exagero.</p>
+      <div class="chips"><span>Moda</span><span>Beleza</span><span>Lifestyle</span></div>
+    </div>
+  </section>
+
+  <section class="tile sec">
+    <h2>Meus <span>números</span></h2>
+    <div class="redes" id="redes"></div>
+    <span class="nota" id="periodo"></span>
+    <div class="aud" id="audiencia"></div>
+    <span class="nota">Audiência do Instagram.</span>
+  </section>
+
+  <section class="tile sec">
+    <h2>O que eu <span>crio</span></h2>
+    <div class="pilar"><h3>Beleza</h3><div class="mosaico">
+      <img src="../img/kit/04.jpg" alt="Make com lip balm Ice Creamy" loading="lazy"><img src="../img/kit/05.jpg" alt="Selfie no espelho com Ice Creamy" loading="lazy"><img src="../img/kit/06.jpg" alt="Make colorida com delineado azul" loading="lazy"><img src="../img/kit/11.jpg" alt="Retrato com batom terracota" loading="lazy">
+    </div></div>
+    <div class="pilar"><h3>Moda</h3><div class="mosaico">
+      <img src="../img/kit/13.jpg" alt="Look preto com cabelo em movimento" loading="lazy"><img src="../img/kit/10.jpg" alt="Look preto entre plantas" loading="lazy"><img src="../img/kit/14.jpg" alt="Top tomara que caia preto" loading="lazy"><img src="../img/kit/18.jpg" alt="Casaco de pelo preto" loading="lazy">
+    </div></div>
+    <div class="pilar"><h3>Lifestyle</h3><div class="mosaico">
+      <img src="../img/kit/03.jpg" alt="Viagem a Santiago" loading="lazy"><img src="../img/kit/08.jpg" alt="Trilha na cachoeira" loading="lazy"><img src="../img/kit/09.jpg" alt="Livraria com câmera analógica" loading="lazy"><img src="../img/kit/16.jpg" alt="Com a gata Maze" loading="lazy">
+    </div></div>
+  </section>
+
+  <section class="tile sec">
+    <h2>Trabalhos <span>recentes</span></h2>
+    <div class="publis" id="publis"></div>
+    <span class="nota no-print">Toque na capa para ver a publi.</span>
+  </section>
+
+  <section class="tile sec">
+    <h2>Marcas & <span>formatos</span></h2>
+    <div class="chips" id="marcas"></div>
+    <div class="chips"><span>Reels</span><span>TikTok</span><span>Stories</span><span>Vídeo para YouTube</span><span>UGC</span></div>
+  </section>
+
+  <section class="contato">
+    <h2>Vamos <span>conversar?</span></h2>
+    <p>Me conta sobre a sua marca e o que você tem em mente, que eu te respondo por e-mail.</p>
+    <p>haubert.nathalia@gmail.com</p>
+    <div class="botoes no-print">
+      <a class="botao cheio" id="email" target="_blank" rel="noopener">Mandar e-mail</a>
+      <button class="botao borda" type="button" id="copiar">Copiar e-mail</button>
+      <button class="botao borda" type="button" id="pdf">Baixar PDF</button>
+    </div>
+  </section>
+</main>
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const EMAIL = 'haubert.nathalia@gmail.com';
+  const $ = (s) => document.querySelector(s);
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const num = (n) => {
+    if (typeof n === 'string') return n;
+    if (n >= 1e6) return (n / 1e6).toFixed(1).replace('.', ',').replace(',0', '') + ' mi';
+    if (n >= 1e3) return (n / 1e3).toFixed(n >= 1e5 ? 0 : 1).replace('.', ',').replace(',0', '') + ' mil';
+    return String(n);
+  };
+  $('#email').href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Parceria com Nathalia Haubert');
+  let t;
+  $('#copiar').onclick = () => {
+    (navigator.clipboard ? navigator.clipboard.writeText(EMAIL) : Promise.reject()).catch(() => {});
+    const a = $('#aviso'); a.textContent = 'E-mail copiado'; a.classList.add('on'); clearTimeout(t); t = setTimeout(() => a.classList.remove('on'), 2000);
+  };
+  $('#pdf').onclick = () => window.print();
+
+  fetch('../data/midiakit.json', { cache: 'no-cache' }).then((r) => r.json()).then((d) => {
+    const [a, m, dia] = (d.atualizado || '').split('-');
+    if (dia) $('#atualizado').textContent = 'Atualizado em ' + dia + '/' + m + '/' + a;
+    $('#periodo').textContent = (d.periodo || '') + ', atualizado toda semana.';
+    $('#redes').innerHTML = (d.redes || []).map((r) =>
+      '<div class="rede"><div class="rede-topo"><b>' + esc(r.rede) + '</b><small>' + esc(r.usuario) + '</small></div>' +
+      '<div class="grande">' + num(r.seguidores) + '<small>' + (r.rede === 'YouTube' ? 'inscritos' : 'seguidores') + '</small></div>' +
+      '<div class="mini">' + (r.stats || []).map((s) => '<div><b>' + num(s.valor) + '</b><small>' + esc(s.rotulo) + '</small></div>').join('') + '</div></div>').join('');
+    $('#audiencia').innerHTML = (d.audiencia || []).map((x) => '<div><b>' + esc(x.valor) + '</b><small>' + esc(x.rotulo) + '</small></div>').join('');
+  }).catch(() => {});
+
+  fetch('../data/publis.json', { cache: 'no-cache' }).then((r) => r.json()).then((p) => {
+    $('#publis').innerHTML = p.map((x) => '<a class="publi" href="' + esc(x.link) + '" target="_blank" rel="noopener"><img src="../' + esc(x.capa) + '" alt="Publi para ' + esc(x.marca) + '" loading="lazy"><span>' + esc(x.marca) + '</span></a>').join('');
+    $('#marcas').innerHTML = [...new Set(p.map((x) => x.marca))].map((m) => '<span>' + esc(m) + '</span>').join('');
+  }).catch(() => {});
+})();
+</script>
+</body>
+</html>

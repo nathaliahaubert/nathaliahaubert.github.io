@@ -110,7 +110,7 @@ if (urlOk(CFG.planilhaCsv)) {
 }
 
 // 4) Links curtos
-const RESERVADOS = new Set(['img', 'data', 'fontes', 'robo', 'index', 'assets', 'fonts', '404']);
+const RESERVADOS = new Set(['img', 'data', 'fontes', 'midiakit-r8q4', 'robo', 'index', 'assets', 'fonts', '404']);
 const slug = (s) => norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 const conteudo = await lerJSON('data/conteudo.json', { cupons: [], produtos: [] });
 const itens = [...(conteudo.cupons || []), ...(conteudo.produtos || [])]

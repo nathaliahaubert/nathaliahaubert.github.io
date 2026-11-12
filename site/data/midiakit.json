@@ -1,0 +1,61 @@
+{
+  "atualizado": "2026-11-12",
+  "periodo": "Últimos 30 dias",
+  "redes": [
+    {
+      "rede": "Instagram",
+      "usuario": "@nathaliahaubert",
+      "seguidores": 17656,
+      "stats": [
+        {
+          "valor": 191047,
+          "rotulo": "visualizações"
+        },
+        {
+          "valor": "15%",
+          "rotulo": "engajamento nos reels"
+        }
+      ]
+    },
+    {
+      "rede": "TikTok",
+      "usuario": "@nathaliahaubertt",
+      "seguidores": 21209,
+      "stats": [
+        {
+          "valor": 21903,
+          "rotulo": "visualizações"
+        },
+        {
+          "valor": "7,4%",
+          "rotulo": "engajamento"
+        }
+      ]
+    },
+    {
+      "rede": "YouTube",
+      "usuario": "@nathaliahaubert",
+      "seguidores": 1270,
+      "stats": [
+        {
+          "valor": 10587,
+          "rotulo": "visualizações"
+        }
+      ]
+    }
+  ],
+  "audiencia": [
+    {
+      "valor": "78%",
+      "rotulo": "mulheres"
+    },
+    {
+      "valor": "55%",
+      "rotulo": "entre 25 e 34 anos"
+    },
+    {
+      "valor": "78%",
+      "rotulo": "no Brasil"
+    }
+  ]
+}
