@@ -74,8 +74,8 @@ svg{flex:none}
 .nome h1 span{color:var(--cobre)}
 .nome p{margin:6px 0 0;font-size:15px;color:var(--suave)}
 .redes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
-.redes a{height:60px;border-radius:20px;background:var(--papel);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s}
-.redes a:active{transform:scale(.94)}
+.redes a,.redes button{height:60px;border-radius:20px;background:var(--papel);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s}
+.redes a:active,.redes button:active{transform:scale(.94)}
 
 /* títulos */
 .titulo{display:flex;align-items:baseline;justify-content:space-between;margin-top:22px;padding:0 4px}
@@ -173,6 +173,7 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
 .parceiras{display:flex;flex-wrap:wrap;gap:8px}
 .parceiras span{height:36px;padding:0 14px;border-radius:12px;background:var(--papel);display:flex;align-items:center;font-size:14px;font-weight:500}
 .botao{height:52px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:700;text-decoration:none}
+.email-txt{margin:-10px 0 0 !important;text-align:center;font-size:13px !important;color:var(--suave) !important}
 .botao.cheio{background:var(--cobre);color:#fff}
 .botao.borda{border:1.5px solid var(--linha);font-weight:500;font-size:14px}
 .modal{margin:auto;width:min(calc(100% - 40px),400px)}
@@ -198,11 +199,13 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
 /* cursor (só no computador) */
 .cursor{display:none}
 @media (hover:hover) and (pointer:fine){
-  .cursor-on body, .cursor-on a, .cursor-on button{cursor:none}
-  .cursor-on .cursor{display:block;position:fixed;left:0;top:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--cobre);pointer-events:none;z-index:100;transition:width .25s,height .25s,margin .25s,background .25s,opacity .2s}
-  .cursor-on .cursor.grande{width:54px;height:54px;margin:-27px 0 0 -27px;background:rgba(164,83,43,.16);border:1px solid rgba(164,83,43,.5)}
+  .cursor-on body, .cursor-on a, .cursor-on button, .cursor-on dialog, .cursor-on dialog::backdrop{cursor:none}
+  .cursor-on input{cursor:text}
+  .cursor-on .cursor{display:block;position:fixed;left:0;top:0;width:24px;height:24px;pointer-events:none;z-index:100;transition:opacity .2s}
+  .cursor svg{display:block;transform-origin:3px 2px;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+  .cursor-on .cursor.grande svg{transform:scale(1.3) rotate(-10deg)}
   .cursor-on .cursor.fora{opacity:0}
-  .redes a:hover{background:var(--cobre-claro)}
+  .redes a:hover,.redes button:hover{background:var(--cobre-claro)}
   .prod:hover{transform:translateY(-3px)}
   .ig-grade a:hover img{transform:scale(1.06)}
   .cupom:hover{background:var(--creme)}
@@ -215,7 +218,7 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<div class="cursor" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 2l15.5 7.2-6.8 2-3.3 6.6z" fill="#8C4321" stroke="#FBF8F4" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
 
 <main class="wrap">
   <section class="hero">
@@ -233,7 +236,7 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
     <a id="r-tiktok" aria-label="TikTok" data-umami-event="rede" data-umami-event-rede="tiktok"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg></a>
     <a id="r-youtube" aria-label="YouTube" data-umami-event="rede" data-umami-event-rede="youtube"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.5v5l4.5-2.5z" fill="currentColor"/></svg></a>
     <a id="r-pinterest" aria-label="Pinterest" data-umami-event="rede" data-umami-event-rede="pinterest"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10.6 20.5l1.6-7.2"/><path d="M9 14.2c-.6-.6-.9-1.4-.9-2.4 0-2.4 1.8-4.3 4.3-4.3 2.3 0 3.8 1.6 3.8 3.6 0 2.5-1.3 4.3-3 4.3-.9 0-1.6-.6-1.4-1.5"/></svg></a>
-    <a id="r-email" aria-label="E-mail" data-umami-event="rede" data-umami-event-rede="email"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></a>
+    <button type="button" id="r-email" aria-label="Copiar e-mail" data-umami-event="rede" data-umami-event-rede="email"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></button>
   </nav>
 
   <section id="cupons" class="surge">
@@ -303,7 +306,8 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
     <div class="numeros" id="marcas-numeros" hidden></div>
     <span class="rotulo">Marcas parceiras</span>
     <div class="parceiras" id="marcas-parceiras"></div>
-    <a class="botao cheio" id="marcas-email" data-umami-event="marcas-email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>Mandar e-mail</a>
+    <button type="button" class="botao cheio" id="marcas-email" data-umami-event="marcas-email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>Copiar e-mail</button>
+    <p class="email-txt" id="marcas-email-txt"></p>
     <a class="botao borda" id="marcas-kit" target="_blank" rel="noopener" data-umami-event="midia-kit" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M5 20h14"/></svg>Mídia kit</a>
   </div>
 </dialog>
@@ -348,14 +352,16 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
     instagram: 'https://www.instagram.com/' + CFG.instagram,
     tiktok: 'https://www.tiktok.com/@' + CFG.tiktok,
     youtube: 'https://www.youtube.com/@' + CFG.youtube,
-    pinterest: 'https://pinterest.com/' + CFG.pinterest,
-    email: 'mailto:' + CFG.email
+    pinterest: 'https://pinterest.com/' + CFG.pinterest
   };
-  for (const k in links) { const a = $('#r-' + k); if (a) { a.href = links[k]; if (k !== 'email') { a.target = '_blank'; a.rel = 'noopener'; } } }
+  for (const k in links) { const a = $('#r-' + k); if (a) { a.href = links[k]; a.target = '_blank'; a.rel = 'noopener'; } }
   $('#yt-canal').href = links.youtube;
   $('#ig-seguir').href = links.instagram; $('#ig-user').textContent = '@' + CFG.instagram;
   $('#tt-seguir').href = links.tiktok; $('#tt-user').textContent = '@' + CFG.tiktok;
   $('#ano').textContent = new Date().getFullYear();
+  ['#yt-canal', '#ig-seguir', '#tt-seguir'].forEach((s) => { const a = $(s); a.target = '_blank'; a.rel = 'noopener'; });
+  const copiarEmail = () => { copiar(CFG.email); avisar('E-mail copiado: ' + CFG.email); };
+  $('#r-email').addEventListener('click', copiarEmail);
 
   // copiar
   function copiar(txt) {
@@ -427,8 +433,8 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
     document.querySelectorAll('.cupom.copiado').forEach((x) => x.classList.remove('copiado'));
     b.classList.add('copiado');
     copiar(c.cupom);
-    if (urlOk(c.link)) { avisar('Cupom copiado, abrindo a loja'); setTimeout(() => location.assign(c.link), 900); }
-    else avisar('Cupom ' + c.cupom + ' copiado');
+    avisar('Cupom ' + c.cupom + ' copiado');
+    if (urlOk(c.link)) window.open(c.link, '_blank', 'noopener');
   });
 
   function desenharAbas() {
@@ -452,7 +458,7 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
       const i = PRODUTOS.indexOf(p);
       const foto = '<img src="' + esc(p.foto) + '" alt="' + esc(p.nome) + '" loading="lazy">';
       const tem = urlOk(p.link);
-      return '<a class="prod"' + (tem ? ' href="' + esc(p.link) + '"' : '') + ' data-i="' + i + '" data-umami-event="produto" data-umami-event-nome="' + esc(p.nome) + '">' +
+      return '<a class="prod"' + (tem ? ' href="' + esc(p.link) + '" target="_blank" rel="noopener"' : '') + ' data-i="' + i + '" data-umami-event="produto" data-umami-event-nome="' + esc(p.nome) + '">' +
         '<span class="foto">' + foto + '</span>' +
         '<span class="info"><span class="pm">' + esc(p.marca) + '</span><span class="pn">' + esc(p.nome) + '</span></span>' +
         '<span class="pf">' + (p.cupom ? '<span class="tag">' + esc(p.cupom) + '</span>' : '<span></span>') + (tem ? ICON.seta : '') + '</span></a>';
@@ -465,7 +471,7 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
   $('#prateleira').addEventListener('click', (e) => {
     const a = e.target.closest('.prod'); if (!a || !a.href) return;
     const p = PRODUTOS[a.dataset.i];
-    if (p && p.cupom) { e.preventDefault(); copiar(p.cupom); avisar('Cupom copiado, abrindo a loja'); setTimeout(() => location.assign(p.link), 900); }
+    if (p && p.cupom) { copiar(p.cupom); avisar('Cupom ' + p.cupom + ' copiado'); }
   });
   function atualizarSeta() {
     const s = $('#prateleira');
@@ -484,7 +490,8 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
     $('#marcas-numeros').innerHTML = nums.slice(0, 3).map((n) => '<div><b>' + esc(n.valor) + '</b><small>' + esc(n.rede) + '</small></div>').join('');
     const parceiras = [...new Set(CUPONS.map((c) => c.marca).filter(Boolean))];
     $('#marcas-parceiras').innerHTML = parceiras.map((m) => '<span>' + esc(m) + '</span>').join('');
-    $('#marcas-email').href = 'mailto:' + CFG.email + '?subject=' + encodeURIComponent('Parceria com Nathalia Haubert');
+    $('#marcas-email-txt').textContent = CFG.email;
+    $('#marcas-email').onclick = copiarEmail;
     const kit = $('#marcas-kit'); kit.hidden = !urlOk(CFG.midiaKit); if (urlOk(CFG.midiaKit)) kit.href = CFG.midiaKit;
   }
   function formatar(n) {
@@ -497,7 +504,7 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
   // abrir e fechar painéis
   document.addEventListener('click', (e) => {
     const abre = e.target.closest('[data-abrir]');
-    if (abre) { const d = document.getElementById(abre.dataset.abrir); if (d && !d.open) d.showModal(); return; }
+    if (abre) { const d = document.getElementById(abre.dataset.abrir); if (d && !d.open) { d.showModal(); d.appendChild(document.querySelector('.cursor')); } return; }
     const fecha = e.target.closest('[data-fechar]');
     if (fecha) { fecha.closest('dialog').close(); return; }
     if (e.target.tagName === 'DIALOG') e.target.close();
@@ -547,6 +554,7 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
   if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reduz) {
     document.documentElement.classList.add('cursor-on');
     const bola = document.querySelector('.cursor');
+    document.querySelectorAll('dialog').forEach((d) => d.addEventListener('close', () => document.body.appendChild(bola)));
     let x = -100, y = -100, cx = -100, cy = -100;
     addEventListener('mousemove', (e) => {
       x = e.clientX; y = e.clientY;
@@ -554,7 +562,7 @@ dialog::backdrop{background:rgba(43,29,22,.5)}
       bola.classList.toggle('grande', !!e.target.closest('a, button, input, label'));
     }, { passive: true });
     document.addEventListener('mouseleave', () => bola.classList.add('fora'));
-    (function anda() { cx += (x - cx) * 0.2; cy += (y - cy) * 0.2; bola.style.transform = 'translate(' + cx + 'px,' + cy + 'px)'; requestAnimationFrame(anda); })();
+    (function anda() { cx += (x - cx) * 0.35; cy += (y - cy) * 0.35; bola.style.transform = 'translate(' + (cx - 3) + 'px,' + (cy - 2) + 'px)'; requestAnimationFrame(anda); })();
   }
 
   // carregar dados
