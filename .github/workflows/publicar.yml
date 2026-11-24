@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy2.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -51,8 +51,19 @@ jobs:
         with:
           path: site
 
+      - name: Esperar o GitHub registrar o pacote
+        if: steps.salvar.outputs.mudou == 'sim' || github.event_name != 'schedule'
+        run: sleep 20
+
       - id: deploy
         if: steps.salvar.outputs.mudou == 'sim' || github.event_name != 'schedule'
+        continue-on-error: true
         uses: actions/deploy-pages@v4
-        with:
-          error_count: 10
+
+      - name: Esperar antes da segunda tentativa
+        if: steps.deploy.outcome == 'failure'
+        run: sleep 60
+
+      - id: deploy2
+        if: steps.deploy.outcome == 'failure'
+        uses: actions/deploy-pages@v4
