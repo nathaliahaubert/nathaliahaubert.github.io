@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: "23 */3 * * *"
+    - cron: "23 */6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -35,17 +35,24 @@ jobs:
           BEHOLD_FEED_URL: ${{ secrets.BEHOLD_FEED_URL }}
 
       - name: Guardar o que mudou
+        id: salvar
         run: |
           git config user.name "robo-link-na-bio"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A site
-          git diff --cached --quiet || { git commit -m "Robô: atualiza conteúdo"; git push; }
+          if git diff --cached --quiet; then echo "mudou=nao" >> "$GITHUB_OUTPUT"; else git commit -m "Robô: atualiza conteúdo"; git push; echo "mudou=sim" >> "$GITHUB_OUTPUT"; fi
 
-      - uses: actions/configure-pages@v5
+      # só publica quando algo mudou (ou quando foi um envio manual)
+      - if: steps.salvar.outputs.mudou == 'sim' || github.event_name != 'schedule'
+        uses: actions/configure-pages@v5
 
-      - uses: actions/upload-pages-artifact@v3
+      - if: steps.salvar.outputs.mudou == 'sim' || github.event_name != 'schedule'
+        uses: actions/upload-pages-artifact@v4
         with:
           path: site
 
       - id: deploy
+        if: steps.salvar.outputs.mudou == 'sim' || github.event_name != 'schedule'
         uses: actions/deploy-pages@v4
+        with:
+          error_count: 10
